@@ -72,6 +72,11 @@ public class Admin extends javax.swing.JFrame {
 
         btnCreateCourse.setBackground(new java.awt.Color(255, 255, 255));
         btnCreateCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/createcourse.png"))); // NOI18N
+        btnCreateCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateCourseActionPerformed(evt);
+            }
+        });
 
         btnDeleteCourse.setBackground(new java.awt.Color(255, 255, 255));
         btnDeleteCourse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deletecourse.png"))); // NOI18N
@@ -176,6 +181,11 @@ public class Admin extends javax.swing.JFrame {
         admDeleteUser admDel = new admDeleteUser();
         admDel.setVisible(true);
     }//GEN-LAST:event_btnDeleteUserActionPerformed
+
+    private void btnCreateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateCourseActionPerformed
+        admCreateCourse admCreateCourse = new admCreateCourse();
+        admCreateCourse.setVisible(true);
+    }//GEN-LAST:event_btnCreateCourseActionPerformed
 
     /**
      * @param args the command line arguments
