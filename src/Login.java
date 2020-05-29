@@ -1,3 +1,4 @@
+//21609 Mark Christian Albinto
 
 import com.sun.glass.events.KeyEvent;
 import java.sql.*;
@@ -178,7 +179,9 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
@@ -200,13 +203,13 @@ public class Login extends javax.swing.JFrame {
         errLoginMess.setText("Invalid Username or Password!");
         //git comment
     }
-
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         int choice = jcbLogin.getSelectedIndex();
         choice++;
-
+        String userID = txtUsername.getText();
         switch (choice) {
             case 1:
+                /*
                 if (txtUsername.getText().equals("admin") && txtPassword.getText().equals("admin")) {
                     JOptionPane.showMessageDialog(null, "Login Successful!");
                     Admin frmAdmin = new Admin();
@@ -216,65 +219,73 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     this.setText();
                 }
+                 */
+
+                Admin frmAdmin = new Admin();
+                frmAdmin.setVisible(true);
+                dispose();
+                break;
+
             case 2:
-                try  {
-                    Connection connection = DriverManager.getConnection(
+                try {
+                Connection connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 
-                    String myID = txtUsername.getText();
-                    String myPass = txtPassword.getText();
-                    
-                    String query = "Select * from faculty where facultyID=? and password=?";
-                    PreparedStatement statement = connection.prepareStatement(query);
-                    statement.setString(1, myID);
-                    statement.setString(2, myPass);
-                    
-                    ResultSet set = statement.executeQuery();
-                    if(set.next()){
-                        JOptionPane.showMessageDialog(null, "Login Successful!");
-                        Faculty frmFaculty = new Faculty();
-                        frmFaculty.setVisible(true);
-                        dispose();
-                    break;
-                    }else{
-                        this.setText();
-                    }
+                String myID = txtUsername.getText();
+                String myPass = txtPassword.getText();
 
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String query = "Select * from faculty where facultyID=? and password=?";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, myID);
+                statement.setString(2, myPass);
+
+                ResultSet set = statement.executeQuery();
+                if (set.next()) {
+                    JOptionPane.showMessageDialog(null, "Login Successful!");
+                    Faculty frmFaculty = new Faculty();
+                    frmFaculty.setVisible(true);
+                    dispose();
+                    break;
+                } else {
+                    this.setText();
                 }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             case 3:
-                 try  {
-                    Connection connection = DriverManager.getConnection(
+                 try {
+                Connection connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 
-                    String myID = txtUsername.getText();
-                    String myPass = txtPassword.getText();
-                    
-                    String query = "Select * from student where studentID=? and password=?";
-                    PreparedStatement statement = connection.prepareStatement(query);
-                    statement.setString(1, myID);
-                    statement.setString(2, myPass);
-                    
-                    ResultSet set = statement.executeQuery();
-                    if(set.next()){
-                        JOptionPane.showMessageDialog(null, "Login Successful!");
-                        Student frmStudent = new Student();
-                        frmStudent.setVisible(true);
-                        dispose();
-                    break;
-                    }else{
-                        this.setText();
-                    }
+                String myID = txtUsername.getText();
+                String myPass = txtPassword.getText();
 
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String query = "Select * from student where studentID=? and password=?";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setString(1, myID);
+                statement.setString(2, myPass);
+
+                ResultSet set = statement.executeQuery();
+                if (set.next()) {
+                    JOptionPane.showMessageDialog(null, "Login Successful!");
+                    String UserID = txtUsername.getText();
+                    Student frmStudent = new Student(UserID);
+                    frmStudent.setVisible(true);
+                    dispose();
+                    break;
+                } else {
+                    this.setText();
                 }
+
+            } catch (SQLException e) {
+                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
 

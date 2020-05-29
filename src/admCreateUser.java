@@ -1,4 +1,4 @@
-
+//21609 Mark Christian Albinto
 import javax.swing.JOptionPane;
 import java.sql.*;
 
@@ -179,7 +179,6 @@ public class admCreateUser extends javax.swing.JFrame {
     
     
     private static final String SQL_INSERT = "INSERT INTO Faculty (firstname, lastname,birthdate,contacts,password) VALUES (?,?,?,?,?)";
-    private static final String SQL_SELECTID = "SELECT facultyID where id";
     public Integer myID=0;
     //private static final  String myFname = admFName.getText();
     //private static final String SQL_SELECT = String.format("SELECT FacultyID FROM Faculty where FirstName=\"%s\"" , myFname);

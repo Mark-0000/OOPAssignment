@@ -1,8 +1,6 @@
 //21609 Mark Christian Albinto
-
 import java.sql.*;
 import javax.swing.JOptionPane;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Lieutenant
  */
-public class admDeleteUser extends javax.swing.JFrame {
+public class admDeleteCourse extends javax.swing.JFrame {
 
     /**
      * Creates new form admDeleteUser
      */
-    public admDeleteUser() {
+    public admDeleteCourse() {
         initComponents();
     }
 
@@ -36,8 +34,8 @@ public class admDeleteUser extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         admbtnDel = new javax.swing.JButton();
-        admCmbDelete = new javax.swing.JComboBox<>();
         admDelID = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -62,7 +60,7 @@ public class admDeleteUser extends javax.swing.JFrame {
             }
         });
 
-        admCmbDelete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lecturer", "Student" }));
+        jLabel3.setText("Delete Course");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,17 +76,17 @@ public class admDeleteUser extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(admbtnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(174, 174, 174)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(admbtnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(107, 107, 107)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(admCmbDelete, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(admDelID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(admDelID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(122, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,21 +94,22 @@ public class admDeleteUser extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(jButton2)
+                        .addGap(65, 65, 65))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(admbtnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(65, 65, 65))
+                        .addGap(18, 18, 18)
+                        .addComponent(admbtnDel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(164, 164, 164)
-                    .addComponent(admCmbDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addGap(204, 204, 204)
                     .addComponent(admDelID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(122, Short.MAX_VALUE)))
         );
@@ -135,54 +134,26 @@ public class admDeleteUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void admbtnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admbtnDelActionPerformed
+        String SQL_DELETE = "DELETE FROM Course WHERE CourseID=?";
+        int myID = Integer.parseInt(admDelID.getText());
+        
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+             PreparedStatement preparedStatement = conn.prepareStatement(SQL_DELETE)) {
 
-        int choice = admCmbDelete.getSelectedIndex();
-        choice++;
+            preparedStatement.setInt(1, myID);
 
-        switch (choice) {
-            case 1:
-                String SQL_DELETE = "DELETE FROM Faculty WHERE FacultyID=?";
-                int myID = Integer.parseInt(admDelID.getText());
+            int row = preparedStatement.executeUpdate();
 
-                try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-                        PreparedStatement preparedStatement = conn.prepareStatement(SQL_DELETE)) {
 
-                    preparedStatement.setInt(1, myID);
-
-                    int row = preparedStatement.executeUpdate();
-
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                JOptionPane.showMessageDialog(null, "User has been succesfully removed");
-                dispose();
-                break;
-            case 2:
-                String SQL_DELETE2 = "DELETE FROM Student WHERE StudentID=?";
-                int myID2 = Integer.parseInt(admDelID.getText());
-
-                try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-                        PreparedStatement preparedStatement = conn.prepareStatement(SQL_DELETE2)) {
-
-                    preparedStatement.setInt(1, myID2);
-
-                    int row = preparedStatement.executeUpdate();
-
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                JOptionPane.showMessageDialog(null, "User has been succesfully removed");
-                dispose();
-                break;
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        
+        JOptionPane.showMessageDialog(null,"Course has been succesfully removed");
+        dispose();
     }//GEN-LAST:event_admbtnDelActionPerformed
 
     /**
@@ -221,12 +192,12 @@ public class admDeleteUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> admCmbDelete;
     private javax.swing.JTextField admDelID;
     private javax.swing.JButton admbtnDel;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

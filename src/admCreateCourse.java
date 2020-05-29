@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+//21609 Mark CHristian Albinto
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,6 +61,11 @@ public class admCreateCourse extends javax.swing.JFrame {
         jLabel5.setText("Faculty ID");
 
         admCreate.setText("Create");
+        admCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admCreateActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/goback.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +154,55 @@ public class admCreateCourse extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+    public Integer myID=0;
+    private void admCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCreateActionPerformed
+        String CourseTitle = txtCourseTitle.getText();
+        String CourseRoom = txtCourseRoom.getText();
+        String FacultyID = txtCourseFacultyID.getText();
+        
+        String SQL_INSERT = "INSERT INTO Course (CourseTitle, Room, FacultyID) VALUES (?,?,?)";
+        String SQL_SELECT = String.format("SELECT CourseID FROM Course where CourseTitle=\"%s\"" , CourseTitle);
+        
+        
+        
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+             PreparedStatement preparedStatement = conn.prepareStatement(SQL_INSERT)) {
+            preparedStatement.setString(1, CourseTitle);
+            preparedStatement.setString(2, CourseRoom);
+            preparedStatement.setString(3, FacultyID);
+
+            int row = preparedStatement.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+             PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int id = resultSet.getInt("CourseID");
+
+                myID = id;
+                
+            }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        JOptionPane.showMessageDialog(null, "Course "+ CourseTitle+" Has Been Created! ID: " + myID);
+        dispose();
+    }//GEN-LAST:event_admCreateActionPerformed
 
     /**
      * @param args the command line arguments
