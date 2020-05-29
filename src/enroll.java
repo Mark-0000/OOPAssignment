@@ -12,12 +12,12 @@ import java.sql.*;
  *
  * @author Lieutenant
  */
-public class admCreateUser extends javax.swing.JFrame {
+public class enroll extends javax.swing.JFrame {
 
     /**
      * Creates new form admCreateUser
      */
-    public admCreateUser() {
+    public enroll() {
         initComponents();
     }
 
@@ -43,9 +43,10 @@ public class admCreateUser extends javax.swing.JFrame {
         admLName = new javax.swing.JTextField();
         admBirthDate = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         admfrmCreateUser = new javax.swing.JButton();
         admNewUserGoBack = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtCourseID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Create New User");
@@ -63,15 +64,13 @@ public class admCreateUser extends javax.swing.JFrame {
 
         jLabel1.setText("Firstname:");
 
-        jLabel6.setText("Create New User");
+        jLabel6.setText("Enroll Student");
 
         jLabel4.setText("Password:");
 
         jLabel7.setText("Birthdate:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lecturer", "Student" }));
-
-        admfrmCreateUser.setText("Create");
+        admfrmCreateUser.setText("Enroll");
         admfrmCreateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 admfrmCreateUserActionPerformed(evt);
@@ -85,6 +84,8 @@ public class admCreateUser extends javax.swing.JFrame {
                 admNewUserGoBackActionPerformed(evt);
             }
         });
+
+        jLabel8.setText("Course ID: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,10 +105,10 @@ public class admCreateUser extends javax.swing.JFrame {
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4)))
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8))
                                 .addGap(70, 70, 70)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(admFName)
                                     .addComponent(admLName)
                                     .addComponent(admContacts)
@@ -116,7 +117,8 @@ public class admCreateUser extends javax.swing.JFrame {
                                         .addComponent(admfrmCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(admNewUserGoBack))
-                                    .addComponent(admBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(admBirthDate, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                    .addComponent(txtCourseID)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(jLabel6)))
@@ -129,9 +131,11 @@ public class admCreateUser extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(admFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,18 +183,22 @@ public class admCreateUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    private static final String SQL_INSERT = "INSERT INTO Faculty (firstname, lastname,birthdate,contacts,password) VALUES (?,?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO Student (firstname, lastname,birthdate,contacts,password) VALUES (?,?,?,?,?)";
     public Integer myID=0;
     //private static final  String myFname = admFName.getText();
     //private static final String SQL_SELECT = String.format("SELECT FacultyID FROM Faculty where FirstName=\"%s\"" , myFname);
     private void admfrmCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admfrmCreateUserActionPerformed
-        String SQL_SELECT = String.format("SELECT FacultyID FROM Faculty where FirstName=\"%s\" and lastname=\"%s\"" , admFName.getText().toString(),admLName.getText().toString());
+        String SQL_SELECT = String.format("SELECT StudentID FROM Student where FirstName=\"%s\" and lastname=\"%s\"" , admFName.getText().toString(),admLName.getText().toString());
         
         String Fname = admFName.getText();
         String Lname = admLName.getText();
         String Birthdate = admBirthDate.getText();
         String Contacts = admContacts.getText();
         String Password = admPassword.getText();
+        
+        String SQL_INSERTpay = "INSERT INTO Payment (studentid, amount,balance,date) VALUES (?,?,?,?)";
+        
+        
         
         
         try (Connection conn = DriverManager.getConnection(
@@ -218,7 +226,7 @@ public class admCreateUser extends javax.swing.JFrame {
 
             while (resultSet.next()) {
 
-                int id = resultSet.getInt("FacultyID");
+                int id = resultSet.getInt("StudentID");
 
                 myID = id;
                 
@@ -230,12 +238,32 @@ public class admCreateUser extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+            PreparedStatement preparedStatement = conn.prepareStatement(SQL_INSERTpay)) {
+            preparedStatement.setString(1, myID.toString());
+            preparedStatement.setDouble(2, 0.0);
+            preparedStatement.setDouble(3, 5000.0);
+            preparedStatement.setString(4, null);
+
+            int row = preparedStatement.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         JOptionPane.showMessageDialog(null, "User "+Fname+" "+Lname+" Has Been Created! ID: " + myID);
+        Login frmLogin = new Login();
+        frmLogin.setVisible(true);
         dispose();
     }//GEN-LAST:event_admfrmCreateUserActionPerformed
 
     private void admNewUserGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admNewUserGoBackActionPerformed
-       dispose();
+       Login frmLogin = new Login();
+        frmLogin.setVisible(true);
+        dispose();
     }//GEN-LAST:event_admNewUserGoBackActionPerformed
 
     /**
@@ -281,7 +309,6 @@ public class admCreateUser extends javax.swing.JFrame {
     private javax.swing.JButton admNewUserGoBack;
     private javax.swing.JPasswordField admPassword;
     private javax.swing.JButton admfrmCreateUser;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -289,6 +316,8 @@ public class admCreateUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtCourseID;
     // End of variables declaration//GEN-END:variables
 }

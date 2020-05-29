@@ -37,6 +37,7 @@ public class Admin extends javax.swing.JFrame {
         btnDeleteCourse = new javax.swing.JButton();
         btnAdmExit = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnAdminUserTable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin");
@@ -104,6 +105,14 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        btnAdminUserTable.setBackground(new java.awt.Color(255, 255, 255));
+        btnAdminUserTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usertable.png"))); // NOI18N
+        btnAdminUserTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminUserTableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,14 +135,18 @@ public class Admin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnDeleteCourse)
-                                        .addGap(129, 129, 129))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnCreateCourse)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(304, 304, 304)
+                                                .addComponent(btnAdmGoBack))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButton1))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnDeleteCourse)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)))
-                                .addGap(175, 175, 175)
-                                .addComponent(btnAdmGoBack))
+                                        .addComponent(btnAdminUserTable))))
                             .addComponent(btnAdmExit, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
@@ -154,8 +167,9 @@ public class Admin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAdminUserTable))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnCreateUser)
                                     .addComponent(btnCreateCourse))
@@ -218,6 +232,11 @@ public class Admin extends javax.swing.JFrame {
         admUserInfo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnAdminUserTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminUserTableActionPerformed
+        admUserTables admUserTable = new admUserTables();
+        admUserTable.setVisible(true);
+    }//GEN-LAST:event_btnAdminUserTableActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +275,7 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmExit;
     private javax.swing.JButton btnAdmGoBack;
+    private javax.swing.JButton btnAdminUserTable;
     private javax.swing.JButton btnCreateCourse;
     private javax.swing.JButton btnCreateUser;
     private javax.swing.JButton btnDeleteCourse;

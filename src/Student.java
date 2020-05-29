@@ -42,8 +42,8 @@ public class Student extends javax.swing.JFrame {
         btnStudentInfo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAssignment = new javax.swing.JButton();
+        btnExam = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,6 +61,11 @@ public class Student extends javax.swing.JFrame {
 
         btnStudentPay.setBackground(new java.awt.Color(255, 255, 255));
         btnStudentPay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
+        btnStudentPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentPayActionPerformed(evt);
+            }
+        });
 
         btnStudentInfo.setBackground(new java.awt.Color(255, 255, 255));
         btnStudentInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/userinfo.png"))); // NOI18N
@@ -74,11 +79,21 @@ public class Student extends javax.swing.JFrame {
 
         jLabel2.setText("Student");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assignment.png"))); // NOI18N
+        btnAssignment.setBackground(new java.awt.Color(255, 255, 255));
+        btnAssignment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assignment.png"))); // NOI18N
+        btnAssignment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignmentActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exam.png"))); // NOI18N
+        btnExam.setBackground(new java.awt.Color(255, 255, 255));
+        btnExam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exam.png"))); // NOI18N
+        btnExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExamActionPerformed(evt);
+            }
+        });
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
@@ -105,12 +120,12 @@ public class Student extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btnStudentInfo)
-                                .addComponent(jButton1))
+                                .addComponent(btnAssignment))
                             .addComponent(btnExit))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGoBack)
-                            .addComponent(jButton2)
+                            .addComponent(btnExam)
                             .addComponent(btnStudentPay))))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
@@ -127,8 +142,8 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(btnStudentPay))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnExam)
+                    .addComponent(btnAssignment))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGoBack)
@@ -165,50 +180,36 @@ public class Student extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
     public Integer myID;
-    public Integer outID;
-    public String outFname;
-    public String outLname;
-    public String outBdate;
-    public String outContacts;
+    
+    
     
     
     private void btnStudentInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentInfoActionPerformed
+        studUserInfo studUserInfo = new studUserInfo();
+        studUserInfo.myUserID(myID);
+        studUserInfo.setVisible(true);
+        /*
         
-        String SQL_SELECTSTUDENT = "SELECT StudentID, Firstname, Lastname, Birthdate, Contacts FROM Student where StudentID=?";
-        try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-                        PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECTSTUDENT)) {
-
-                preparedStatement.setInt(1, myID);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-
-                    int id = resultSet.getInt("StudentID");
-                    String firstname = resultSet.getString("Firstname");
-                    String lastname = resultSet.getString("Lastname");
-                    String birthdate = resultSet.getString("Birthdate");
-                    String contacts = resultSet.getString("Contacts");
-
-                    outID = id;
-                    outFname = firstname;
-                    outLname = lastname;
-                    outBdate = birthdate;
-                    outContacts = contacts;
-
-                }
-
-            } catch (SQLException e) {
-                System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        JOptionPane.showMessageDialog(null, "ID: " + outID + "\n Firstname: " + outFname + "\n Lastname: " + outLname + "\n Birthdate: " + outBdate + "\n Contacts: " + outContacts);
-        outID = null;
-        outFname = null;
-        outLname = null;
-        outBdate = null;
-        outContacts = null;
+        */
     }//GEN-LAST:event_btnStudentInfoActionPerformed
+
+    private void btnAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignmentActionPerformed
+        studAssignment studAssignment = new studAssignment();
+        studAssignment.myUserID(myID);
+        studAssignment.setVisible(true);
+    }//GEN-LAST:event_btnAssignmentActionPerformed
+
+    private void btnExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExamActionPerformed
+        studExam studExam = new studExam();
+        studExam.myUserID(myID);
+        studExam.setVisible(true);
+    }//GEN-LAST:event_btnExamActionPerformed
+
+    private void btnStudentPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentPayActionPerformed
+        studPayment studPayment = new studPayment();
+        studPayment.myUserID(myID);
+        studPayment.setVisible(true);
+    }//GEN-LAST:event_btnStudentPayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,12 +248,12 @@ public class Student extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssignment;
+    private javax.swing.JButton btnExam;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGoBack;
     private javax.swing.JButton btnStudentInfo;
     private javax.swing.JButton btnStudentPay;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
