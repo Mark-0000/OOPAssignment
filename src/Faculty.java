@@ -32,10 +32,10 @@ public class Faculty extends javax.swing.JFrame {
         facDeleteUser = new javax.swing.JButton();
         btnGoBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExam = new javax.swing.JButton();
+        btnAssignment = new javax.swing.JButton();
         btnStudents = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnPay = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +70,11 @@ public class Faculty extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exam.png"))); // NOI18N
+        btnExam.setBackground(new java.awt.Color(255, 255, 255));
+        btnExam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exam.png"))); // NOI18N
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assignment.png"))); // NOI18N
+        btnAssignment.setBackground(new java.awt.Color(255, 255, 255));
+        btnAssignment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assignment.png"))); // NOI18N
 
         btnStudents.setBackground(new java.awt.Color(255, 255, 255));
         btnStudents.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/students.png"))); // NOI18N
@@ -84,8 +84,8 @@ public class Faculty extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
+        btnPay.setBackground(new java.awt.Color(255, 255, 255));
+        btnPay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
 
         jLabel2.setText("Lecturer");
 
@@ -110,15 +110,15 @@ public class Faculty extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(facDeleteUser)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3)
+                                        .addComponent(btnAssignment)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnStudents))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnFacUserInfo)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)
+                                        .addComponent(btnExam)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton6))))
+                                        .addComponent(btnPay))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
                                 .addComponent(jLabel1)))
@@ -136,12 +136,12 @@ public class Faculty extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnFacUserInfo, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButton6))
+                        .addComponent(btnExam, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnPay))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(facDeleteUser)
-                    .addComponent(jButton3)
+                    .addComponent(btnAssignment)
                     .addComponent(btnStudents))
                 .addGap(33, 33, 33)
                 .addComponent(btnGoBack)
@@ -225,13 +225,13 @@ public class Faculty extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssignment;
+    private javax.swing.JButton btnExam;
     private javax.swing.JButton btnFacUserInfo;
     private javax.swing.JButton btnGoBack;
+    private javax.swing.JButton btnPay;
     private javax.swing.JButton btnStudents;
     private javax.swing.JButton facDeleteUser;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
