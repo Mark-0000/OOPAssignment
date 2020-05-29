@@ -1,4 +1,5 @@
 //21609 Mark Christian Albinto
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -7,7 +8,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Lieutenant
@@ -195,12 +195,7 @@ public class studUserInfo extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnGoBackActionPerformed
     public Integer usernameID;
-    public Integer outID;
-    public String outFname;
-    public String outLname;
-    public String outBdate;
-    public String outContacts;
-    public String outPassword;
+
     private void btnDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayActionPerformed
         System.out.print(usernameID);
         lblID.setText(usernameID.toString());
@@ -220,12 +215,11 @@ public class studUserInfo extends javax.swing.JFrame {
                 String contacts = resultSet.getString("Contacts");
                 String password = resultSet.getString("Password");
 
-                outID = id;
-                outFname = firstname;
-                outLname = lastname;
-                outBdate = birthdate;
-                outContacts = contacts;
-                outPassword = password;
+                txtfname.setText(firstname);
+                txtlname.setText(lastname);
+                txtbdate.setText(birthdate);
+                txtcontact.setText(contacts);
+                txtpasswd.setText(password);
 
             }
 
@@ -234,25 +228,16 @@ public class studUserInfo extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        txtfname.setText(outFname.toString());
-        txtlname.setText(outLname.toString());
-        txtbdate.setText(outBdate.toString());
-        txtcontact.setText(outContacts.toString());
-        txtpasswd.setText(outPassword.toString());
-        outID = null;
-        outFname = null;
-        outLname = null;
-        outBdate = null;
-        outContacts = null;
-        outPassword = null;
+
+  
     }//GEN-LAST:event_btnDisplayActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
-             Statement statement = conn.createStatement()) {
+                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                Statement statement = conn.createStatement()) {
 
-            int row = statement.executeUpdate(updateStudent(txtfname.getText(), txtlname.getText(),txtbdate.getText(),txtcontact.getText(),txtpasswd.getText(),usernameID));
+            int row = statement.executeUpdate(updateStudent(txtfname.getText(), txtlname.getText(), txtbdate.getText(), txtcontact.getText(), txtpasswd.getText(), usernameID));
             System.out.println(row);
 
         } catch (SQLException e) {
@@ -265,9 +250,10 @@ public class studUserInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
     private static String updateStudent(String fname, String lname, String bdate, String contact, String passwd, int myID) {
 
-        return "UPDATE Student SET Firstname='" + fname + "',Lastname='" + lname + "',Birthdate='" + bdate + "',contacts='" + contact + "',password='" + passwd + "' WHERE studentid="+myID;
+        return "UPDATE Student SET Firstname='" + fname + "',Lastname='" + lname + "',Birthdate='" + bdate + "',contacts='" + contact + "',password='" + passwd + "' WHERE studentid=" + myID;
 
     }
+
     /**
      * @param args the command line arguments
      */
