@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Lieutenant
  */
-public class admUserTables extends javax.swing.JFrame {
+public class facUserTables extends javax.swing.JFrame {
 
     /**
      * Creates new form admUserTables
      */
-    public admUserTables() {
+    public facUserTables() {
         initComponents();
     }
 
@@ -35,7 +35,6 @@ public class admUserTables extends javax.swing.JFrame {
         btnDisplay = new javax.swing.JButton();
         btnGoBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        cmbUserTables = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -183,9 +182,7 @@ public class admUserTables extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
-        cmbUserTables.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Lecturer" }));
-
-        jLabel2.setText("User Tables");
+        jLabel2.setText("Student User Tables");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,15 +200,11 @@ public class admUserTables extends javax.swing.JFrame {
                             .addComponent(btnGoBack)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(cmbUserTables, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(btnDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(62, 62, 62)
+                                .addComponent(btnDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(390, 390, 390)
+                        .addGap(363, 363, 363)
                         .addComponent(jLabel2)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -221,8 +214,6 @@ public class admUserTables extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbUserTables, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
                         .addComponent(btnDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(btnGoBack))
@@ -256,17 +247,14 @@ public class admUserTables extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayActionPerformed
-        int choice = cmbUserTables.getSelectedIndex();
-        choice++;
-        switch (choice) {
-            case 1:
+
                 String SQL_SELECT = "SELECT * FROM Student";
                 try (Connection conn = DriverManager.getConnection(
                         "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
                     ResultSet resultSet = preparedStatement.executeQuery();
-                    DefaultTableModel tm = (DefaultTableModel) table.getModel();
+                    DefaultTableModel tm = (DefaultTableModel)table.getModel();
                     tm.setRowCount(0);
                     while (resultSet.next()) {
                         Object o[] = {resultSet.getInt("StudentID"), resultSet.getString("Firstname"), resultSet.getString("Lastname"), resultSet.getString("Birthdate"), resultSet.getString("Contacts")};
@@ -278,28 +266,7 @@ public class admUserTables extends javax.swing.JFrame {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                break;
-            case 2:
-                String SQL_SELECT2 = "SELECT * FROM Faculty";
-                try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-                        PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT2)) {
-
-                    ResultSet resultSet = preparedStatement.executeQuery();
-                    DefaultTableModel tm = (DefaultTableModel) table.getModel();
-                    tm.setRowCount(0);
-                    while (resultSet.next()) {
-                        Object o[] = {resultSet.getInt("FacultyID"), resultSet.getString("Firstname"), resultSet.getString("Lastname"), resultSet.getString("Birthdate"), resultSet.getString("Contacts")};
-                        tm.addRow(o);
-                    }
-
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-        }
+     
 
 
     }//GEN-LAST:event_btnDisplayActionPerformed
@@ -346,7 +313,6 @@ public class admUserTables extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDisplay;
     private javax.swing.JButton btnGoBack;
-    private javax.swing.JComboBox<String> cmbUserTables;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

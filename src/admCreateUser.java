@@ -69,7 +69,7 @@ public class admCreateUser extends javax.swing.JFrame {
 
         jLabel7.setText("Birthdate:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lecturer", "Student" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lecturer" }));
 
         admfrmCreateUser.setText("Create");
         admfrmCreateUser.addActionListener(new java.awt.event.ActionListener() {

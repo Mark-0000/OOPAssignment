@@ -43,7 +43,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         errLoginMess = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnEnroll = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loginbg.png"))); // NOI18N
@@ -120,11 +120,11 @@ public class Login extends javax.swing.JFrame {
         errLoginMess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errLoginMess.setText(" ");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enroll.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEnroll.setBackground(new java.awt.Color(255, 255, 255));
+        btnEnroll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enroll.png"))); // NOI18N
+        btnEnroll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEnrollActionPerformed(evt);
             }
         });
 
@@ -155,7 +155,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlLoginLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
                                 .addComponent(btnExit))
                             .addComponent(jLabel1)))
@@ -188,7 +188,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(pnlLoginLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnExit))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -268,7 +268,9 @@ public class Login extends javax.swing.JFrame {
                 ResultSet set = statement.executeQuery();
                 if (set.next()) {
                     JOptionPane.showMessageDialog(null, "Login Successful!");
+                    String UserID = txtUsername.getText();
                     Faculty frmFaculty = new Faculty();
+                    Faculty.getUserID(UserID);
                     frmFaculty.setVisible(true);
                     dispose();
                     break;
@@ -331,11 +333,11 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtUsernameKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEnrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnrollActionPerformed
         enroll enroll = new enroll();
         enroll.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEnrollActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,10 +375,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnroll;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel errLoginMess;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
