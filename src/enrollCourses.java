@@ -229,23 +229,23 @@ public class enrollCourses extends javax.swing.JFrame {
 
     private void btnDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisplayActionPerformed
         String SQL_SELECT = "SELECT CourseID,CourseTitle FROM Course";
-                try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-                        PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
-                    ResultSet resultSet = preparedStatement.executeQuery();
-                    DefaultTableModel tm = (DefaultTableModel) table.getModel();
-                    tm.setRowCount(0);
-                    while (resultSet.next()) {
-                        Object o[] = {resultSet.getInt("CourseID"), resultSet.getString("CourseTitle")};
-                        tm.addRow(o);
-                    }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            DefaultTableModel tm = (DefaultTableModel) table.getModel();
+            tm.setRowCount(0);
+            while (resultSet.next()) {
+                Object o[] = {resultSet.getInt("CourseID"), resultSet.getString("CourseTitle")};
+                tm.addRow(o);
+            }
 
-                } catch (SQLException e) {
-                    System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnDisplayActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed

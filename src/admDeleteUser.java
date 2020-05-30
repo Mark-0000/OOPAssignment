@@ -154,7 +154,7 @@ public class admDeleteUser extends javax.swing.JFrame {
                 int myID = Integer.parseInt(admDelID.getText());
 
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_DELETE)) {
 
                     preparedStatement.setInt(1, myID);
@@ -178,7 +178,7 @@ public class admDeleteUser extends javax.swing.JFrame {
                 int myID2 = Integer.parseInt(admDelID.getText());
 
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_DELETE2)) {
 
                     preparedStatement.setInt(1, myID2);

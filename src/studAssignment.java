@@ -256,7 +256,7 @@ public class studAssignment extends javax.swing.JFrame {
         
         String SQL_SELECT = "SELECT StudentID,Date,Status,result,courseID FROM Assignment where StudentID=?";
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
                     
                     preparedStatement.setInt(1, usernameID);

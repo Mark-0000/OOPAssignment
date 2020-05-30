@@ -202,7 +202,7 @@ public class facUserInfo extends javax.swing.JFrame {
         lblID.setText(userID.toString());
         String SQL_SELECT = "SELECT FacultyID, Firstname, Lastname, Birthdate, Contacts, Password FROM Faculty where facultyID=?";
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                 PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
             preparedStatement.setInt(1, userID);
@@ -234,7 +234,7 @@ public class facUserInfo extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                 Statement statement = conn.createStatement()) {
 
             int row = statement.executeUpdate(updateLecturer(txtfname.getText(), txtlname.getText(),txtbdate.getText(),txtcontact.getText(),txtpasswd.getText(),userID));

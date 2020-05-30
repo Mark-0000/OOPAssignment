@@ -153,7 +153,7 @@ public class admUserInfo extends javax.swing.JFrame {
         switch (choice) {
             case 1:
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECTSTUDENT)) {
 
                 preparedStatement.setInt(1, myID);
@@ -183,7 +183,7 @@ public class admUserInfo extends javax.swing.JFrame {
             case 2:
                 
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECTFACULTY)) {
 
                 preparedStatement.setInt(1, myID);

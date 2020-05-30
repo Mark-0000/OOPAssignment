@@ -170,7 +170,7 @@ public class enroll extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(admfrmCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
@@ -213,7 +213,7 @@ public class enroll extends javax.swing.JFrame {
         
         
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_INSERT)) {
             preparedStatement.setString(1, Fname);
             preparedStatement.setString(2, Lname);
@@ -230,7 +230,7 @@ public class enroll extends javax.swing.JFrame {
         }
         
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -250,7 +250,7 @@ public class enroll extends javax.swing.JFrame {
         }
         
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
             PreparedStatement preparedStatement = conn.prepareStatement(SQL_INSERTpay)) {
             preparedStatement.setString(1, myID.toString());
             preparedStatement.setDouble(2, 0.0);

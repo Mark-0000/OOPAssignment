@@ -194,7 +194,7 @@ public class admCreateUser extends javax.swing.JFrame {
         
         
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_INSERT)) {
             preparedStatement.setString(1, Fname);
             preparedStatement.setString(2, Lname);
@@ -211,7 +211,7 @@ public class admCreateUser extends javax.swing.JFrame {
         }
         
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
+                "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root", "root");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
             ResultSet resultSet = preparedStatement.executeQuery();

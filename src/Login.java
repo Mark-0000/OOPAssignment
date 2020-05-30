@@ -255,7 +255,7 @@ public class Login extends javax.swing.JFrame {
             case 2:
                 try {
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 
                 String myID = txtUsername.getText();
                 String myPass = txtPassword.getText();
@@ -282,12 +282,12 @@ public class Login extends javax.swing.JFrame {
                 System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
-            }
-            break;
+            } 
+                break;
             case 3:
                  try {
                 Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 
                 String myID = txtUsername.getText();
                 String myPass = txtPassword.getText();

@@ -262,7 +262,7 @@ public class admUserTables extends javax.swing.JFrame {
             case 1:
                 String SQL_SELECT = "SELECT * FROM Student";
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)) {
 
                     ResultSet resultSet = preparedStatement.executeQuery();
@@ -282,7 +282,7 @@ public class admUserTables extends javax.swing.JFrame {
             case 2:
                 String SQL_SELECT2 = "SELECT * FROM Faculty";
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+                        "jdbc:mysql://localhost/21609oopassignment?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
                         PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT2)) {
 
                     ResultSet resultSet = preparedStatement.executeQuery();

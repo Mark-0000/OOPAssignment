@@ -173,6 +173,9 @@
               <Image iconType="3" name="/images/exam.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExamActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAssignment">
           <Properties>
@@ -183,6 +186,9 @@
               <Image iconType="3" name="/images/assignment.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignmentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnStudents">
           <Properties>
@@ -206,6 +212,9 @@
               <Image iconType="3" name="/images/pay.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

@@ -72,9 +72,19 @@ public class Faculty extends javax.swing.JFrame {
 
         btnExam.setBackground(new java.awt.Color(255, 255, 255));
         btnExam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exam.png"))); // NOI18N
+        btnExam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExamActionPerformed(evt);
+            }
+        });
 
         btnAssignment.setBackground(new java.awt.Color(255, 255, 255));
         btnAssignment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/assignment.png"))); // NOI18N
+        btnAssignment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignmentActionPerformed(evt);
+            }
+        });
 
         btnStudents.setBackground(new java.awt.Color(255, 255, 255));
         btnStudents.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/students.png"))); // NOI18N
@@ -86,6 +96,11 @@ public class Faculty extends javax.swing.JFrame {
 
         btnPay.setBackground(new java.awt.Color(255, 255, 255));
         btnPay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Lecturer");
 
@@ -188,6 +203,21 @@ public class Faculty extends javax.swing.JFrame {
         facDeleteUser facDeleteUser = new facDeleteUser();
         facDeleteUser.setVisible(true);
     }//GEN-LAST:event_facDeleteUserActionPerformed
+
+    private void btnExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExamActionPerformed
+        facExam facExam = new facExam();
+        facExam.setVisible(true);
+    }//GEN-LAST:event_btnExamActionPerformed
+
+    private void btnAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignmentActionPerformed
+        facAssignment facAssignment = new facAssignment();
+        facAssignment.setVisible(true);
+    }//GEN-LAST:event_btnAssignmentActionPerformed
+
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
+        facPayment facPayment = new facPayment();
+        facPayment.setVisible(true);
+    }//GEN-LAST:event_btnPayActionPerformed
 
     /**
      * @param args the command line arguments
